@@ -2,6 +2,12 @@ const {getWeather} = require('./getWeather')
 const {getLocation} = require('./getLocation')
 const colors = require('colors')
 const figlet = require('figlet')
+const {promisify} = require ('util')
+
+const promisifiedFiglet = promisify(figlet)
+
+
+
 
 const fToC = (far) => {
         return (Math.floor((far - 32) * (5/9)))
@@ -13,13 +19,18 @@ const main = async (place) => {
 
     const location = await getLocation(place)
     const weather = await getWeather(location)
-    // console.log(weather)
-    // console.log(weather.temperature)
-    // console.log(weather.precipProbability)
-    console.log(`\n**************`.green)
-    console.log(`The temperature in ${location.name.red} is ${fToC(weather.temperature)}\u00B0C`.blue)
-    console.log(`and the proabilty of rain is ${weather.precipProbability}`.blue)
-    console.log(`\n**************`.green)
+    const theLocation = location.name.red
+    const theTemp = fToC(weather.temperature)
+    const chanceOfRain = weather.precipProbability
+
+    console.clear()
+
+    const data = await promisifiedFiglet("Get the Weather")
+    console.log(`\n*****************************************************************************`.green)
+    console.log(data)
+    console.log(`The temperature in ${theLocation} is ${theTemp}\u00B0C`.blue)
+    console.log(`and the proabilty of rain is ${chanceOfRain}`.blue)
+    console.log(`\n*****************************************************************************`.green)
 
 }
 
