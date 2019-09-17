@@ -1,17 +1,32 @@
 const {getWeather} = require('./getWeather')
 const {getLocation} = require('./getLocation')
+const colors = require('colors')
+const figlet = require('figlet')
+
+const fToC = (far) => {
+        return (Math.floor((far - 32) * (5/9)))
+}
+
+let myWeatherLocation = process.argv[2]
 
 const main = async (place) => {
 
     const location = await getLocation(place)
     const weather = await getWeather(location)
-    console.log(weather)
+    // console.log(weather)
+    // console.log(weather.temperature)
+    // console.log(weather.precipProbability)
+    console.log(`\n**************`.green)
+    console.log(`The temperature in ${location.name.red} is ${fToC(weather.temperature)}\u00B0C`.blue)
+    console.log(`and the proabilty of rain is ${weather.precipProbability}`.blue)
+    console.log(`\n**************`.green)
+
 }
 
 
 
 
-main(process.argv[2])
+main(myWeatherLocation)
 
 
 
