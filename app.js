@@ -10,6 +10,6 @@ request({url:"https://api.darksky.net/forecast/c626a74f746d221a941c09e743f9c58f/
         // console.log(responce)
         // need tp parse the JSON data
         const data = JSON.parse(responce.body)
-        console.log(data)
+        console.log(data.currently.temperature) //  for temperature .currently.temperature
     }
 })
