@@ -12,7 +12,7 @@ try {
         {url:`https://api.darksky.net/forecast/${apiKey}/37.8267,-122.4233`, json: true}
     )
     console.log(data.body.currently)
-    console.log(`  temp is --> ${data.currently.temperature}`) //  for temperature .currently.temperature
+    console.log(`  temp is --> ${data.body.currently.temperature}`) //  for temperature .currently.temperature
 } catch (error) {
     console.log("oops error!")
 }
