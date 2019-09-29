@@ -1,5 +1,8 @@
 # Node Weather App
 
+
+<img src="https://raw.githubusercontent.com/tomsstuff101/node-weather-app-v1/master/README-images/node%20weather%20app.png" >
+
 ### getLocation
 Given a place name it returns a latitud, logitiude and exact location name using the Map box api
 
